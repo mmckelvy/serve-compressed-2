@@ -1,0 +1,17 @@
+{
+  "name": "@mmckelvy/serve-compressed",
+  "version": "1.0.0",
+  "description": "Serve pre-compressed assets from an Node.js / Express server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "compression",
+    "compressed",
+    "express",
+    "assets"
+  ],
+  "author": "Mark McKelvy",
+  "license": "MIT"
+}
