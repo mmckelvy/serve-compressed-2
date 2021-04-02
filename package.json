@@ -4,7 +4,7 @@
   "description": "Serve pre-compressed assets from an Node.js / Express server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava"
   },
   "keywords": [
     "compression",
@@ -13,5 +13,14 @@
     "assets"
   ],
   "author": "Mark McKelvy",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^3.15.0",
+    "express": "^4.17.1",
+    "got": "^11.8.2",
+    "test-listen": "^1.1.0"
+  },
+  "ava": {
+    "files": ["./test/test.js"]
+  }
 }

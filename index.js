@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+
 const mime = require('mime');
 
 /*
@@ -8,11 +9,15 @@ accordingly.
 
 @param {string[]} extensions - List of compressed file types to check.
 */
-module.exports = function serveCompressed(extensions = ['.js', '.css']) {
+module.exports = function serveCompressed({
+  extensions = ['.js', '.css'],
+  basePath = process.cwd()
+} = {}) {
 
   // Usual Express middleware params...
   return function serve(req, res, next) {
     const includedFile = extensions.includes(path.extname(req.url));
+    // Better logic here.
     const requestedCompressed = req.header('accept-encoding');
 
     // Not a compressed file type or compressed resource not requested, bail early.
@@ -22,7 +27,7 @@ module.exports = function serveCompressed(extensions = ['.js', '.css']) {
 
     // Build the compressed file path
     // Make this smarter
-    const compressedPath = `${path.join(process.cwd(), req.url)}.gz`;
+    const compressedPath = `${path.join(basePath, req.url)}.gz`;
 
     // Check for existence of the compressed resource
     fs.stat(compressedPath, (err, stats) => {
@@ -42,6 +47,6 @@ module.exports = function serveCompressed(extensions = ['.js', '.css']) {
 
       // Pass control to the next function
       next();
-    })
+    });
   }
 }
