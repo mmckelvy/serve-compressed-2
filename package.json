@@ -21,6 +21,11 @@
     "test-listen": "^1.1.0"
   },
   "ava": {
-    "files": ["./test/test.js"]
+    "files": [
+      "./test/test.js"
+    ]
+  },
+  "dependencies": {
+    "mime": "^2.5.2"
   }
 }

@@ -13,7 +13,6 @@ module.exports = function serveCompressed({
   extensions = ['.js', '.css'],
   basePath = process.cwd()
 } = {}) {
-
   // Usual Express middleware params...
   return function serve(req, res, next) {
     const includedFile = extensions.includes(path.extname(req.url));
@@ -38,8 +37,8 @@ module.exports = function serveCompressed({
 
       // Compressed file is available, set the appropriate headers
       res.set({
-        'Content-Encoding': 'gzip',
-        'Content-Type': mime.getType(req.url),
+        'content-encoding': 'gzip',
+        'content-type': mime.getType(req.url),
       });
 
       // Update the url to use the compressed resource

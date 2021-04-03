@@ -22,12 +22,10 @@ test.before(async (t) => {
 test('Case 1', async (t) => {
   const res = await got.get('files/bundle.js', {
     prefixUrl: t.context.prefixUrl,
-    throwHttpErrors: false,
-
+    throwHttpErrors: false
   });
 
-  // Should get a gzipped file
-  t.is(true, true);
+  t.is(res.headers['content-encoding'], 'gzip');
 });
 
 test.after.always('Teardown', async (t) => {
