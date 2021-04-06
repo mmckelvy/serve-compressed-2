@@ -8,15 +8,16 @@ Checks for a compressed resource and modifies the req and res properties
 accordingly.
 
 @param {string[]} extensions - List of compressed file types to check.
+@param {string} rootDir - The root directory from which you'll be serving
+ the compressed resources.
 */
 module.exports = function serveCompressed({
   extensions = ['.js', '.css'],
-  basePath = process.cwd()
+  rootDir = process.cwd()
 } = {}) {
   // Usual Express middleware params...
   return function serve(req, res, next) {
     const includedFile = extensions.includes(path.extname(req.url));
-    // Better logic here.
     const requestedCompressed = req.header('accept-encoding');
 
     // Not a compressed file type or compressed resource not requested, bail early.
@@ -26,7 +27,7 @@ module.exports = function serveCompressed({
 
     // Build the compressed file path
     // Make this smarter
-    const compressedPath = `${path.join(basePath, req.url)}.gz`;
+    const compressedPath = `${path.join(rootDir, req.url)}.gz`;
 
     // Check for existence of the compressed resource
     fs.stat(compressedPath, (err, stats) => {
