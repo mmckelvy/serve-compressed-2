@@ -27,5 +27,9 @@
   },
   "dependencies": {
     "mime": "^2.5.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mmckelvy/serve-compressed-2.git"
   }
 }
