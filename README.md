@@ -43,3 +43,14 @@ Default: `['.js', '.css']`. An array of file extensions to include when checking
 **rootDir** `string`
 
 Default: `process.cwd()`. The root directory where your compressed assets are located.
+
+
+### Returns
+
+`function`
+
+An Express middleware function with the following signature:
+
+```javascript
+function serve(req, res, next)
+```
