@@ -36,6 +36,7 @@ Note that serve-compressed expects gzipped files (i.e. files with a `.gz` extens
 
 **extensions** `string[]`.  Default: `[.js', '.css']`
 An array of file extensions to include when checking for compressed assets.  For example, if you pass `[.js', '.css']` (the default), serve-compressed will check for compressed versions of any .js or .css file requested.
+
 ---
 
 **rootDir** `string`.  Default: `process.cwd()`
