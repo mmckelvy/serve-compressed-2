@@ -17,11 +17,26 @@ const serveCompressed = require('@mmckelvy/serve-compressed');
 const app = express();
 
 // Include serveCompressed BEFORE your middleware
-app.use(serveCompressed({basePath: __dirname}));
+app.use(serveCompressed({
+  extensions: ['.js', '.css'],
+  rootDir: __dirname
+}));
 app.use('/files', express.static(path.join(__dirname, 'files')));
 
 module.exports = app;
 ```
 
+Note that serve-compressed expects gzipped files (i.e. files with a `.gz` extension).
+
 # API
-### serveCompressed
+
+## serveCompressed
+
+### Parameters
+
+**extensions** `string[]`.  Default: `[.js', '.css']`
+An array of file extensions to include when checking for compressed assets.  For example, if you pass `[.js', '.css']` (the default), serve-compressed will check for compressed versions of any .js or .css file requested.
+--
+
+**rootDir** `string`.  Default: `process.cwd()`
+The root directory where your compressed assets are located.
